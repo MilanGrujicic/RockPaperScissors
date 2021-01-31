@@ -45,15 +45,31 @@ def result(ValidatedInput, computerMove):
 		print(w)
 
 
-computerMove = randint(0, 2)
+
 prompt = '> '
 
-startgame()
+c = True
+while c:
 
-userInput = int(input(prompt))
-if userInput == 9:
-	sys.exit()
-ValidatedInput = inputValidation(userInput)
+	computerMove = randint(0, 2)
 
-result(ValidatedInput, computerMove)
+	startgame()
+
+	userInput = int(input(prompt))
+
+	if userInput == 9:
+		sys.exit()
+
+	ValidatedInput = inputValidation(userInput)
+
+	result(ValidatedInput, computerMove)
+
+	continue_input = input('Play again [y/n]? ').upper()
+
+	while continue_input not in 'YyNn':
+		print('Incorrect input, please type y or n')
+		continue_input = input((prompt))
+			
+	if continue_input == 'N':
+		c = False
 
